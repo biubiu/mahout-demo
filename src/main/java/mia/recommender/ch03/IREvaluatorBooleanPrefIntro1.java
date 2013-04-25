@@ -28,7 +28,6 @@ class IREvaluatorBooleanPrefIntro1 {
 
         RecommenderEvaluator evaluator = new AverageAbsoluteDifferenceRecommenderEvaluator();
         RecommenderBuilder recommenderBuilder = new RecommenderBuilder() {
-            @Override
             public Recommender buildRecommender(DataModel model) throws TasteException {
                 UserSimilarity similarity = new PearsonCorrelationSimilarity(model);
                 UserNeighborhood neighborhood = new NearestNUserNeighborhood(10, similarity, model);
@@ -36,7 +35,6 @@ class IREvaluatorBooleanPrefIntro1 {
             }
         };
         DataModelBuilder modelBuilder = new DataModelBuilder() {
-            @Override
             public DataModel buildDataModel(FastByIDMap<PreferenceArray> trainingData) {
                 return new GenericBooleanPrefDataModel(GenericBooleanPrefDataModel.toDataMap(trainingData));
             }

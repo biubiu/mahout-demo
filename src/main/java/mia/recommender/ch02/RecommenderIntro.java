@@ -13,6 +13,8 @@ import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.apache.mahout.cf.taste.recommender.Recommender;
 import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 
+import com.google.common.collect.Lists;
+
 class RecommenderIntro {
 
     private RecommenderIntro() {
@@ -20,13 +22,16 @@ class RecommenderIntro {
 
     public static void main(String[] args) throws Exception {
         DataModel model = Init.getSimple();
+
         UserSimilarity similarity = new PearsonCorrelationSimilarity(model);
+
         UserNeighborhood neighborhood = new NearestNUserNeighborhood(2, similarity, model);
+
         Recommender recommender = new GenericUserBasedRecommender(model, neighborhood, similarity);
-        List<RecommendedItem> recommendations = recommender.recommend(1, 1);
-        for (RecommendedItem recommendation : recommendations) {
-            System.out.println(recommendation);
+        List<RecommendedItem> recommendations = recommender.recommend(1,1);
+
+        for (RecommendedItem e: recommendations) {
+            System.out.println(e);
         }
     }
-
 }
