@@ -1,4 +1,4 @@
-package org.conan.mahout.demo2;
+package com.shawn.mahout.demo2;
 
 import java.io.File;
 import java.io.IOException;

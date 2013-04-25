@@ -1,4 +1,4 @@
-package org.conan.mahout.demo;
+package com.shawn.mahout.demo;
 
 import mia.recommender.Init;
 

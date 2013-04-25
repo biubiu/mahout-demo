@@ -3,3 +3,4 @@
 .classpath
 target/*
 metadata/data
+.settings/*

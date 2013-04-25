@@ -1,4 +1,4 @@
-package org.conan.mahout.website;
+package com.shawn.mahout.website;
 
 import java.io.File;
 import java.io.IOException;

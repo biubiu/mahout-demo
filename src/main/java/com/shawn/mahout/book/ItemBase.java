@@ -1,4 +1,4 @@
-package org.conan.mahout.book;
+package com.shawn.mahout.book;
 
 import java.io.File;
 import java.util.List;

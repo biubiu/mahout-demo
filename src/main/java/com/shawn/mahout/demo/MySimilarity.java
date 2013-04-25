@@ -1,4 +1,4 @@
-package org.conan.mahout.demo;
+package com.shawn.mahout.demo;
 
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.similarity.EuclideanDistanceSimilarity;
