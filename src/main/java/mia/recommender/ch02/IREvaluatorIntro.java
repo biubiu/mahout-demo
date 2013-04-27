@@ -23,12 +23,11 @@ class IREvaluatorIntro {
 
     public static void main(String[] args) throws Exception {
         RandomUtils.useTestSeed();
-        DataModel model = Init.getSimple();
-
+        DataModel model = Init.getUaBase();
+        //DataModel model = Init.getSimple();
         RecommenderIRStatsEvaluator evaluator = new GenericRecommenderIRStatsEvaluator();
         // Build the same recommender for testing that we did last time:
         RecommenderBuilder recommenderBuilder = new RecommenderBuilder() {
-            @Override
             public Recommender buildRecommender(DataModel model) throws TasteException {
                 UserSimilarity similarity = new PearsonCorrelationSimilarity(model);
                 UserNeighborhood neighborhood = new NearestNUserNeighborhood(2, similarity, model);
@@ -37,7 +36,10 @@ class IREvaluatorIntro {
         };
         // Evaluate precision and recall "at 2":
         IRStatistics stats = evaluator.evaluate(recommenderBuilder, null, model, null, 2, GenericRecommenderIRStatsEvaluator.CHOOSE_THRESHOLD, 1.0);
+
+        //portion of top relevent documents
         System.out.println(stats.getPrecision());
+        //portion of all relevant results include top results
         System.out.println(stats.getRecall());
     }
 }

@@ -21,8 +21,8 @@ class RecommenderIntro {
     }
 
     public static void main(String[] args) throws Exception {
-        DataModel model = Init.getSimple();
-
+      //  DataModel model = Init.getSimple();
+        DataModel model = Init.getUaBase();
         UserSimilarity similarity = new PearsonCorrelationSimilarity(model);
 
         UserNeighborhood neighborhood = new NearestNUserNeighborhood(2, similarity, model);
@@ -30,8 +30,15 @@ class RecommenderIntro {
         Recommender recommender = new GenericUserBasedRecommender(model, neighborhood, similarity);
         List<RecommendedItem> recommendations = recommender.recommend(1,2);
 
-        for (RecommendedItem e: recommendations) {
-            System.out.println(e);
+        for (int i = 0; i < 100; i++) {
+            List<RecommendedItem> items = recommender.recommend(i, 5);
+            System.out.printf(String.format("User %s\n", i));
+            for (RecommendedItem e : items) {
+                System.out.println(e);
+            }
         }
+        /*for (RecommendedItem e: recommendations) {
+            System.out.println(e);
+        }*/
     }
 }
