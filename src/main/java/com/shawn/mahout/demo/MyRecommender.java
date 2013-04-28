@@ -34,7 +34,6 @@ public class MyRecommender {
     public static RecommenderBuilder userBuilder(final UserSimilarity us, final UserNeighborhood un) throws TasteException {
         System.out.println("推荐模型: UserRecommender");
         return new RecommenderBuilder() {
-            @Override
             public Recommender buildRecommender(DataModel model) throws TasteException {
                 return new GenericUserBasedRecommender(model, un, us);
             }
@@ -44,7 +43,6 @@ public class MyRecommender {
     public static RecommenderBuilder itemBuilder(final ItemSimilarity is) throws TasteException {
         System.out.println("推荐模型: ItemRecommender");
         return new RecommenderBuilder() {
-            @Override
             public Recommender buildRecommender(DataModel model) throws TasteException {
                 return new GenericItemBasedRecommender(model, is);
             }
@@ -54,7 +52,6 @@ public class MyRecommender {
     public static RecommenderBuilder svdBuilder() throws TasteException {
         System.out.println("推荐模型: SVDRecommender");
         return new RecommenderBuilder() {
-            @Override
             public Recommender buildRecommender(DataModel model) throws TasteException {
                 return new SVDRecommender(model, new ALSWRFactorizer(model, 10, 0.05, 10));
             }
@@ -64,7 +61,6 @@ public class MyRecommender {
     public static RecommenderBuilder knnItemBuilder() throws TasteException {
         System.out.println("推荐模型: KnnItemBasedRecommender");
         return new RecommenderBuilder() {
-            @Override
             public Recommender buildRecommender(DataModel model) throws TasteException {
                 ItemSimilarity similarity = new LogLikelihoodSimilarity(model);
                 Optimizer optimizer = new ConjugateGradientOptimizer();

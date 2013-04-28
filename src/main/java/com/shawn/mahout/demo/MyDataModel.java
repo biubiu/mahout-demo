@@ -23,7 +23,7 @@ import org.apache.mahout.cf.taste.model.PreferenceArray;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 public class MyDataModel {
-    
+
     public static DataModel getPrefDataByFile() throws Exception {
         System.out.println("数据源: PrefDataByFile");
         String data = "metadata/data/data1.csv";
@@ -78,7 +78,6 @@ public class MyDataModel {
 
     public static DataModelBuilder createNoPrefDataModelBuilder() throws TasteException {
         return new DataModelBuilder() {
-            @Override
             public DataModel buildDataModel(FastByIDMap<PreferenceArray> trainingData) {
                 return new GenericBooleanPrefDataModel(GenericBooleanPrefDataModel.toDataMap(trainingData));
             }
@@ -87,7 +86,6 @@ public class MyDataModel {
 
     public static DataModelBuilder createPrefDataModelBuilder() throws TasteException {
         return new DataModelBuilder() {
-            @Override
             public DataModel buildDataModel(FastByIDMap<PreferenceArray> trainingData) {
                 return new GenericDataModel(trainingData);
             }
